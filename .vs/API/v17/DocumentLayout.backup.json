@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|c:\\users\\gabriel\\desktop\\.net\\api\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|solutionrelative:api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|c:\\users\\gabriel\\desktop\\.net\\api\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|c:\\users\\gabriel\\desktop\\.net\\api\\api\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|solutionrelative:api\\controllers\\reviewscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|c:\\users\\gabriel\\desktop\\.net\\api\\api\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|solutionrelative:api\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|c:\\users\\gabriel\\desktop\\.net\\api\\api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|solutionrelative:api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|c:\\users\\gabriel\\desktop\\.net\\api\\api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|solutionrelative:api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|c:\\users\\gabriel\\desktop\\.net\\api\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B1D773F6-45DD-41A7-98FF-49C3CB432562}|API\\API.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,26 +34,52 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Review.cs",
-              "DocumentMoniker": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Models\\Review.cs",
-              "RelativeDocumentMoniker": "API\\Models\\Review.cs",
-              "ToolTip": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Models\\Review.cs",
-              "RelativeToolTip": "API\\Models\\Review.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-12T02:04:22.85Z",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\appsettings.json",
+              "RelativeDocumentMoniker": "API\\appsettings.json",
+              "ToolTip": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\appsettings.json",
+              "RelativeToolTip": "API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-12T18:01:54.976Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAB8AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T15:31:32.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA1wCIAAABeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T15:09:04.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UsersController.cs",
               "DocumentMoniker": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\UsersController.cs",
               "ToolTip": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Controllers\\UsersController.cs",
               "RelativeToolTip": "API\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAmwCcAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-12T01:54:22.071Z",
               "EditorCaption": ""
@@ -58,7 +92,7 @@
               "RelativeDocumentMoniker": "API\\Controllers\\ReviewsController.cs",
               "ToolTip": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\Controllers\\ReviewsController.cs",
               "RelativeToolTip": "API\\Controllers\\ReviewsController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAIwEwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwBwAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-11T17:51:36.278Z",
               "EditorCaption": ""

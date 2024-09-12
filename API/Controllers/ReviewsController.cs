@@ -1,10 +1,12 @@
 ﻿using API.Data;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Security.Claims;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -19,14 +21,23 @@ public class ReviewsController : ControllerBase
         _context = context;
         _httpClient = httpClient;
     }
-    
+
     // Adiciona uma review no banco de dados
     // Se o filme não estiver no banco, adiciona-o.
     // Se não, apenas adiciona a review ao filme 
     // POST: api/Reviews
+    [Authorize]
     [HttpPost("/addReview")]
     public async Task<IActionResult> AddReview([FromBody] ReviewRequest reviewRequest)
     {
+        // Obter o email do usuário autenticado a partir do token JWT
+        var userEmail = User.Claims.SingleOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+        if (userEmail == null) return Unauthorized("Usuário não autenticado.");
+
+        // Buscar o usuário no banco de dados usando o email
+        var user = await _context.User.FirstOrDefaultAsync(u => u.Email == userEmail);
+        if (user == null) return Unauthorized("Usuário não encontrado.");
+
         if (reviewRequest == null) return BadRequest("Requisição inválida.");
         
         if (string.IsNullOrWhiteSpace(reviewRequest.MovieName)) return BadRequest("Nome do filme é obrigatório.");
@@ -56,9 +67,6 @@ public class ReviewsController : ControllerBase
             _context.Movie.Add(existingMovie);
             await _context.SaveChangesAsync();
         }
-
-        var user = await _context.User.FindAsync(reviewRequest.UserId);
-        if (user == null) return NotFound("User not found");
 
         // Criar a review associada ao filme
         var review = new Review
