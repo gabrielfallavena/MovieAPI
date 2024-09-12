@@ -19,20 +19,17 @@ public class ReviewsController : ControllerBase
         _context = context;
         _httpClient = httpClient;
     }
-
+    
+    // Adiciona uma review no banco de dados
+    // Se o filme não estiver no banco, adiciona-o.
+    // Se não, apenas adiciona a review ao filme 
     // POST: api/Reviews
     [HttpPost("/addReview")]
     public async Task<IActionResult> AddReview([FromBody] ReviewRequest reviewRequest)
     {
-        if (reviewRequest == null)
-        {
-            return BadRequest("Requisição inválida.");
-        }
-
-        if (string.IsNullOrWhiteSpace(reviewRequest.MovieName))
-        {
-            return BadRequest("Nome do filme é obrigatório.");
-        }
+        if (reviewRequest == null) return BadRequest("Requisição inválida.");
+        
+        if (string.IsNullOrWhiteSpace(reviewRequest.MovieName)) return BadRequest("Nome do filme é obrigatório.");
 
         // Verificar se o filme existe no banco de dados
         Movie existingMovie = null;
@@ -60,6 +57,9 @@ public class ReviewsController : ControllerBase
             await _context.SaveChangesAsync();
         }
 
+        var user = await _context.User.FindAsync(reviewRequest.UserId);
+        if (user == null) return NotFound("User not found");
+
         // Criar a review associada ao filme
         var review = new Review
         {
@@ -67,27 +67,29 @@ public class ReviewsController : ControllerBase
             Comment = reviewRequest.Comment,
             MovieTitle = existingMovie.Title,
             MovieId = existingMovie.Id,
+            UserId = user.Id            
         };
 
-        _context.Reviews.Add(review);
+        // Adiciona no banco de dados e salva
+        _context.Review.Add(review);
+        user.Reviews.Add(review);
         await _context.SaveChangesAsync();
 
         return Ok(review);
     }
 
+    // Procura o filme no OMDb a partir do seu nome, retorna um Movie
     private async Task<Movie> GetMovieFromOmdbAsync(string movieName)
     {
         var response = await _httpClient.GetAsync($"http://www.omdbapi.com/?t={movieName}&apikey={_omdbApiKey}");
 
-        if (!response.IsSuccessStatusCode)
-        {
-            return null;
-        }
+        if (!response.IsSuccessStatusCode) return null;
 
         var omdbMovie = await response.Content.ReadFromJsonAsync<OMDbMovieResponse>();
 
         if (omdbMovie == null || omdbMovie.Title == null) return null;
         
+        // Preparo para formatar a data de lançamento
         DateTime date;
         string format = "dd MMM yyyy";
         bool success = DateTime.TryParseExact(omdbMovie.Released, format, CultureInfo.InvariantCulture, DateTimeStyles.None, out date);
@@ -102,17 +104,18 @@ public class ReviewsController : ControllerBase
         return movie;
     }
 
-    // GET: api/Reviews/movie/{movieId}
-    [HttpGet("movie/{movieId}")]
-    public async Task<ActionResult<IEnumerable<Review>>> GetReviewsByMovie(int movieId)
+    // Busca as reviews do filme passado como parametro
+    // GET: api/Reviews/movie/{movieTitle}
+    [HttpGet("{movieTitle}")]
+    public async Task<ActionResult<IEnumerable<Review>>> GetReviewsByMovie(string movieTitle)
     {
         // Verifica se o filme existe
-        var movie = await _context.Movie.FindAsync(movieId);
-        if (movie == null) return NotFound($"Movie with ID {movieId} not found.");
+        var movie = await _context.Movie.FirstOrDefaultAsync(m => m.Title == movieTitle);
+        if (movie == null) return NotFound($"Movie with name {movieTitle} not found.");
         
         // Obtém todas as reviews associadas ao filme
-        var reviews = await _context.Reviews
-            .Where(r => r.MovieId == movieId)
+        var reviews = await _context.Review
+            .Where(r => r.MovieTitle == movieTitle)
             .ToListAsync();
 
         return Ok(reviews);

@@ -20,6 +20,7 @@ namespace API.Data
         }
 
         public DbSet<Movie> Movie { get; set; } = default!;
-        public DbSet<Review> Reviews { get; set; } = default!;
+        public DbSet<Review> Review { get; set; } = default!;
+        public DbSet<User> User { get; set; } = default!;
     }
 }

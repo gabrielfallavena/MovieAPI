@@ -16,6 +16,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "UsersController",
+    "Method": "CreateUser",
+    "RelativePath": "addUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userRequest",
+        "Type": "API.Models.UserRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MoviesController",
     "Method": "GetMovieFromOmdb",
     "RelativePath": "api/Movies/{movieName}",
@@ -34,14 +50,40 @@
   {
     "ContainingType": "ReviewsController",
     "Method": "GetReviewsByMovie",
-    "RelativePath": "api/Reviews/movie/{movieId}",
+    "RelativePath": "api/Reviews/{movieTitle}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "movieId",
-        "Type": "System.Int32",
+        "Name": "movieTitle",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[API.Models.Review, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "UsersController",
+    "Method": "GetUserReviews",
+    "RelativePath": "api/Users/getUserReviews/{userName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userName",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

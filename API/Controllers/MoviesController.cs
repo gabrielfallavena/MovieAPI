@@ -9,7 +9,7 @@ public class MoviesController : ControllerBase
 {
     private readonly APIContext _context;
     private readonly HttpClient _httpClient;
-    private readonly string _omdbApiKey = "21eaea2"; // Insira sua chave da OMDb API aqui
+    private readonly string _omdbApiKey = "21eaea2";
 
     public MoviesController(APIContext context, HttpClient httpClient)
     {
@@ -23,15 +23,12 @@ public class MoviesController : ControllerBase
     {
         var response = await _httpClient.GetAsync($"http://www.omdbapi.com/?t={movieName}&apikey={_omdbApiKey}");
 
-        if (!response.IsSuccessStatusCode)
-        {
-            return NotFound("Filme não encontrado na OMDb.");
-        }
+        if (!response.IsSuccessStatusCode) return NotFound("Filme não encontrado na OMDb.");   
 
         var omdbMovie = await response.Content.ReadFromJsonAsync<OMDbMovieResponse>();
 
         if (omdbMovie == null || omdbMovie.Title == null) return NotFound("Filme não encontrado.");
-     
+
         return Ok(omdbMovie);
     }
 }
