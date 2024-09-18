@@ -3038,11 +3038,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\api\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\API.csproj",
+      "projectPath": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\api\\API.csproj",
       "packagesPath": "C:\\Users\\Gabriel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\API\\obj\\",
+      "outputPath": "C:\\Users\\Gabriel\\Desktop\\.NET\\API\\api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

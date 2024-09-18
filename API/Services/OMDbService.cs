@@ -24,7 +24,9 @@ public class OMDbService
                 Title = movieData.Title,
                 Director = movieData.Director,
                 Genre = movieData.Genre,
-                ReleaseDate = DateTime.Parse(movieData.Released)
+                ReleaseDate = DateTime.Parse(movieData.Released),
+                Synopsis = movieData.Plot,
+                PosterUrl = movieData.Poster
             };
         }
         return null;

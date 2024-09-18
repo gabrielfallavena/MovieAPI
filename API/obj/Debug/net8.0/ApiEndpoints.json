@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "UsersController",
+    "Method": "AddFriend",
+    "RelativePath": "addFriend",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "identifier",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ReviewsController",
     "Method": "AddReview",
     "RelativePath": "addReview",
@@ -10,22 +26,6 @@
       {
         "Name": "reviewRequest",
         "Type": "API.Models.ReviewRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "UsersController",
-    "Method": "CreateUser",
-    "RelativePath": "addUser",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userRequest",
-        "Type": "API.Models.UserRequest",
         "IsRequired": true
       }
     ],
@@ -64,15 +64,95 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "ReviewsController",
-    "Method": "GetReviewsByMovie",
-    "RelativePath": "api/Reviews/{movieTitle}",
+    "ContainingType": "MoviesController",
+    "Method": "GetMovieData",
+    "RelativePath": "api/Movies/{movieTitle}/MovieData",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "movieTitle",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MoviesController",
+    "Method": "GetReviewsForMovie",
+    "RelativePath": "api/Movies/{movieTitle}/Reviews",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movieTitle",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MoviesController",
+    "Method": "SearchMovies",
+    "RelativePath": "api/Movies/searchMovies",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UsersController",
+    "Method": "GetUserFriends",
+    "RelativePath": "api/Users/{userId}/Friends",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UsersController",
+    "Method": "GetUserData",
+    "RelativePath": "api/Users/{userId}/UserData",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UsersController",
+    "Method": "GetUserReviews",
+    "RelativePath": "api/Users/{userId}/UserReviews",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -91,28 +171,34 @@
   },
   {
     "ContainingType": "UsersController",
-    "Method": "GetUserReviews",
-    "RelativePath": "api/Users/getUserReviews/{userName}",
+    "Method": "SearchMovie",
+    "RelativePath": "api/Users/searchUser",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userName",
+        "Name": "query",
         "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UsersController",
+    "Method": "CreateUser",
+    "RelativePath": "createUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userRequest",
+        "Type": "API.Models.UserRequest",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[API.Models.Review, API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   }
 ]

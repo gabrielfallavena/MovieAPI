@@ -38,6 +38,7 @@ public class AuthController : ControllerBase
             Subject = new ClaimsIdentity(new Claim[]
             {
                 new Claim(ClaimTypes.Email, existUser.Email),
+                new Claim(ClaimTypes.Name, existUser.Name)
             }),
             Expires = DateTime.UtcNow.AddHours(1),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

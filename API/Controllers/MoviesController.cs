@@ -31,4 +31,48 @@ public class MoviesController : ControllerBase
 
         return Ok(omdbMovie);
     }
+
+    [HttpGet("searchMovies")]
+    public async Task<IActionResult> SearchMovies(string query)
+    {
+        if (string.IsNullOrEmpty(query)) return BadRequest("Search query cannot be empty.");
+
+        query = query.ToLower();
+
+        var movies = await _context.Movie
+            .Where(m => m.Title.ToLower().Contains(query)).ToListAsync();
+
+        return Ok(movies);
+    }
+
+    // GET: Obtem dados do filme
+    [HttpGet("{movieTitle}/MovieData")]
+    public async Task<IActionResult> GetMovieData(string movieTitle)
+    {
+        var movie = await _context.Movie.FirstOrDefaultAsync(m => m.Title == movieTitle);
+
+        if (movie == null) return NotFound("Filme não está no banco de dados");
+
+        return Ok(movie);
+    }
+
+    // Busca as reviews do filme passado como parametro
+    [HttpGet("{movieTitle}/Reviews")]
+    public async Task<IActionResult> GetReviewsForMovie(string movieTitle)
+    {
+        var reviews = await (from review in _context.Review
+                             join user in _context.User
+                             on review.UserId equals user.Id
+                             where review.MovieTitle == movieTitle
+                             select new ReviewDTO
+                             {
+                                 Rating = review.Rating,
+                                 Comment = review.Comment,
+                                 MovieTitle = review.MovieTitle,
+                                 Date = review.Date,
+                                 UserName = user.Name
+                             }).ToListAsync();
+
+        return Ok(reviews);
+    }
 }

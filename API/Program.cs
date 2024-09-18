@@ -13,7 +13,6 @@ builder.Services.AddDbContext<APIContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
     new MySqlServerVersion(new Version(8, 0, 39))));
 
-
 // Configuração de autenticação, autorização e Swagger
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -27,6 +26,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
         };
     });
+
+// Adiciona o CORS aos serviços
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000") // URL da sua aplicação React
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
 
 builder.Services.AddAuthorization();
 builder.Services.AddControllers();
@@ -73,6 +84,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // Configuração do middleware
+app.UseCors("AllowReactApp");
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
